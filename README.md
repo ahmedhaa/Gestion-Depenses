@@ -43,6 +43,7 @@ Le projet est organisé comme suit :
 - **Data** : Contient le `DepenseDbContext`, la classe de contexte représentant la connexion et le mappage entre l'application et la base de données.
 - **Models** : Définit les entités du projet (`Depense`, `Deplacement`, `Restaurant`, `User`).
 - **DTOs** : Définit les objets de transfert de données pour les entités (`DepenseDto`, `DeplacementDto`, `RestaurantDto`).
+- **Migrations**: pour la gestion des migrations de la base de données
 - **Services** : Contient les services pour l'initialisation des rôles (Admin, User) et des utilisateurs.
 - **Program.cs** : Configuration principale de l'application qui contient :
   - **Middleware pour la Gestion Centralisée des Exceptions** : Capture et formate les erreurs globales en JSON.
