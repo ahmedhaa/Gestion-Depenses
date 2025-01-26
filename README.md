@@ -62,7 +62,7 @@ Le projet utilise un fichier JSON pour stocker les configurations importantes te
 
 ## Architecture
 
-Ce projet suit une architecture en couches, séparant les responsabilités pour une meilleure organisation et maintenance du code.
+Ce projet suit une architecture en couches
 
 ## Gestion des Dépenses via l'API
 
