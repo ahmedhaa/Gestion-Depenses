@@ -89,7 +89,8 @@ NB : Si vous choisissez Nature : 0 (Déplacement), le champ NombreInvités n'est
                 mais il doit être un entier ou null. 
                 Dans tous les cas, ces deux champs sont obligatoires.
 - **Réponse** : Retourne la dépense ajoutée avec son ID généré
-![image](https://github.com/user-attachments/assets/d5f99f12-7c12-4c3f-894e-8ac69f8eeabe)
+![image](https://github.com/user-attachments/assets/98db4625-6e7b-46fc-8e80-7a78fa730d01)
+
 
 
 
