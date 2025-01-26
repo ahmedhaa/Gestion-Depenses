@@ -1,0 +1,13 @@
+﻿[*.cs]
+
+# CS1591: Commentaire XML manquant pour le type ou le membre visible publiquement
+dotnet_diagnostic.CS1591.severity = none
+
+# CS8618: Un champ non-nullable doit contenir une valeur autre que Null lors de la fermeture du constructeur. Envisagez d’ajouter le modificateur « required » ou de déclarer le champ comme pouvant accepter la valeur Null.
+dotnet_diagnostic.CS8618.severity = none
+
+# IDE0320: Rendre la fonction anonyme statique
+dotnet_diagnostic.IDE0320.severity = none
+
+# CS8604: Existence possible d'un argument de référence null.
+dotnet_diagnostic.CS8604.severity = none

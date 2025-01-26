@@ -1,0 +1,315 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API de Gestion des Dépenses",
+    "description": "Une API pour gérer les dépenses.",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Authentification/login": {
+      "post": {
+        "tags": [
+          "Authentification"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Authentification/register": {
+      "post": {
+        "tags": [
+          "Authentification"
+        ],
+        "summary": "Ajout nouvel utilisateur",
+        "description": "Ajouter un nouvel utilisateur",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Depenses": {
+      "get": {
+        "tags": [
+          "Depenses"
+        ],
+        "summary": "Liste des dépenses",
+        "description": "Récupère une liste de dépenses avec pagination.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Non autorisé."
+          },
+          "403": {
+            "description": "Accès interdit : seuls les administrateurs peuvent accéder à cette ressource."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Depenses"
+        ],
+        "summary": "Ajouter une dépense",
+        "description": "Ajoute une nouvelle dépense (La nature de la dépense: 0 pour Déplacement et 1 pour Restaurant),La distance, obligatoire et doit etre positif si la nature est Déplacement (0).Le nombre d'invités doit etre un nombre entier positif ou 0 si la nature est Restaurant (1)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepenseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepenseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepenseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Depenses/{id}": {
+      "get": {
+        "tags": [
+          "Depenses"
+        ],
+        "summary": "Récupérer une dépense",
+        "description": "Récupère une dépense spécifique par son ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepenseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepenseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepenseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Depenses"
+        ],
+        "summary": "Supprimer une dépense",
+        "description": "Supprime une dépense de la base de données par son ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DepenseDto": {
+        "required": [
+          "nature"
+        ],
+        "type": "object",
+        "properties": {
+          "montant": {
+            "minimum": 0,01,
+            "type": "number",
+            "format": "double"
+          },
+          "commentaire": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "nature": {
+            "$ref": "#/components/schemas/TypeDepense"
+          },
+          "distance": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nombreInvites": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginModel": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string",
+            "format": "password"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterModel": {
+        "required": [
+          "confirmPassword",
+          "email",
+          "password",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string",
+            "format": "password"
+          },
+          "confirmPassword": {
+            "minLength": 1,
+            "type": "string",
+            "format": "password"
+          },
+          "role": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TypeDepense": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Veuillez entrer le jeton JWT sous la forme 'Bearer votre_token",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

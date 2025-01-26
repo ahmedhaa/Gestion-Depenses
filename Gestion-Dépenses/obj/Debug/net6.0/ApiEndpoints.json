@@ -1,0 +1,124 @@
+[
+  {
+    "ContainingType": "Gestion_D\u00E9penses.Controllers.AuthentificationController",
+    "Method": "Login",
+    "RelativePath": "api/Authentification/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Gestion_D\u00E9penses.Models.UserModel.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Gestion_D\u00E9penses.Controllers.AuthentificationController",
+    "Method": "Register",
+    "RelativePath": "api/Authentification/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Gestion_D\u00E9penses.Models.UserModel.RegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Gestion_D\u00E9penses.Controllers.DepensesController",
+    "Method": "GetDepenses",
+    "RelativePath": "api/Depenses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 401
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "Gestion_D\u00E9penses.Controllers.DepensesController",
+    "Method": "AddDepense",
+    "RelativePath": "api/Depenses",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "depenseDto",
+        "Type": "Gestion_D\u00E9penses.Dto.DepenseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Gestion_D\u00E9penses.Controllers.DepensesController",
+    "Method": "GetDepense",
+    "RelativePath": "api/Depenses/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Gestion_D\u00E9penses.Dto.DepenseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Gestion_D\u00E9penses.Controllers.DepensesController",
+    "Method": "DeleteDepense",
+    "RelativePath": "api/Depenses/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
