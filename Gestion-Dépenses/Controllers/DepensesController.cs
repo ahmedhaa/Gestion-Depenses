@@ -128,14 +128,16 @@ namespace Gestion_Dépenses.Controllers
         // Ajouter une dépense
         [Authorize(Roles = "Admin")]
         [HttpPost]
-    [SwaggerOperation(
+[SwaggerOperation(
     Summary = "Ajouter une dépense", 
     Description = "Ajoute une nouvelle dépense. La nature de la dépense peut être : 0 pour Déplacement ou 1 pour Restaurant. "
                 + "La Distance est obligatoire et doit être un nombre positif si la nature est Déplacement (0). "
                 + "Le NombreInvités doit être un entier positif ou égal à 0 si la nature est Restaurant (1). "
-                + "NB : Si vous choisissez Nature : 0 (Déplacement), le champ NombreInvités doit être égal à 0. "
-                + "Si vous choisissez Nature : 1 (Restaurant), le champ Distance doit être égal à 0. "
-                + "Ces deux champs sont obligatoires."
+                + "NB : Si vous choisissez Nature : 0 (Déplacement), le champ NombreInvités n'est pas pris en compte, "
+                + "mais il doit être un entier ou null. "
+                + "Si vous choisissez Nature : 1 (Restaurant), le champ Distance n'est pas pris en compte, "
+                + "mais il doit être un entier ou null. "
+                + "Dans tous les cas, ces deux champs sont obligatoires."
 )]
         public async Task<IActionResult> AddDepense([FromBody] DepenseDto depenseDto)
         {
