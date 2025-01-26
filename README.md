@@ -83,8 +83,11 @@ Ce projet suit une architecture en couches
 ### Ajouter une dépense
 
 - **Description** : Cette méthode permet d'ajouter une nouvelle dépense. L'ID et la Date de la dépense sont enregistrés automatiquement.
-- NB: Si vous choisissez Nature : 0 (Déplacement), le champ NombreInvités doit être égal à 0.
-Si vous choisissez Nature : 1 (Restaurant), le champ Distance doit être égal à 0. Ces deux champs sont obligatoires.
+NB : Si vous choisissez Nature : 0 (Déplacement), le champ NombreInvités n'est pas pris en compte, 
+                mais il doit être un entier ou null.
+                Si vous choisissez Nature : 1 (Restaurant), le champ Distance n'est pas pris en compte
+                mais il doit être un entier ou null. 
+                Dans tous les cas, ces deux champs sont obligatoires.
 - **Réponse** : Retourne la dépense ajoutée avec son ID généré 
 
 ### Suppression d'une dépense par ID
