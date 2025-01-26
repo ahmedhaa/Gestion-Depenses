@@ -33,6 +33,7 @@ Les dépendances nécessaires pour le projet incluent :
 - `Microsoft.EntityFrameworkCore.Sqlite`
 - `Microsoft.AspNetCore.Identity.EntityFrameworkCore`
 - `Microsoft.AspNetCore.Authentication.JwtBearer`
+ ...
 
 ## Structure du Projet
 
