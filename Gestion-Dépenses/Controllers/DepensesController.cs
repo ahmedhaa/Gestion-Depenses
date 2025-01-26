@@ -19,7 +19,7 @@ namespace Gestion_Dépenses.Controllers
         }
 
         //  Lister les dépenses avec pagination
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [SwaggerResponse(StatusCodes.Status401Unauthorized, "Non autorisé.")]
         [SwaggerResponse(StatusCodes.Status403Forbidden, "Accès interdit : seuls les administrateurs peuvent accéder à cette ressource.")]
